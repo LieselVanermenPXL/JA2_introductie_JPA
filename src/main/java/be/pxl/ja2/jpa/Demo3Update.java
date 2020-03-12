@@ -16,10 +16,11 @@ public class Demo3Update {
 		try {
 			entityManagerFactory = Persistence.createEntityManagerFactory("musicdb_pu");
 			entityManager = entityManagerFactory.createEntityManager();
-			TypedQuery<Contact> query = entityManager.createQuery("SELECT c FROM Contact c WHERE c.name = :name", Contact.class);
+			TypedQuery<Contact> query = entityManager.createQuery("SELECT c FROM Contact c WHERE c.name = :name", Contact.class);  // = geen SQL query maar de eigen query language van Hibernate,
+			// bvb 'c' betekent contact selecteren, velden hoeven niet gespecifieerd te worden
 			EntityTransaction tx = entityManager.getTransaction();
 			tx.begin();
-			query.setParameter("name", "Sophie");
+			query.setParameter("name", "Sophie"); // parameters worden aangegeven met ervoor :
 			Contact result = query.getSingleResult();
 			System.out.println(result);
 			result.setPhone(999000);

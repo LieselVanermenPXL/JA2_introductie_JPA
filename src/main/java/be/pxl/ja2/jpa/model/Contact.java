@@ -6,17 +6,17 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
-@Entity
-@Table(name = "contacts")
+@Entity   // hierdoor weet Hibernate dat deze objecten opgeslaan kunnen worden in de databank
+@Table(name = "contacts")  // om Hibernate te laten weten dat objecten van deze klasse in de tabel opgeslaan zitten als "contacts"
 public class Contact {
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Id    // laat weten wat de private key is
+	@GeneratedValue(strategy = GenerationType.IDENTITY)  // door IDENTITY weet Hibernate dat Id vanzelf wordt opgehoogd door de databank (Auto increment)
 	private int id;
 	private String name;
 	private int phone;
 	private String email;
 
-	public Contact() {
+	public Contact() {       // default constructor moet ALTIJD aanwezig zijn --> Hibernate heeft deze nodig om objecten aan te maken
 	}
 
 	public Contact(String name, int phone, String email) {
